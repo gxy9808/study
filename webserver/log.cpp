@@ -29,7 +29,7 @@ bool Log::init(const char *file_name, int close_log, int log_buf_size, int split
     if(max_queue_size >= 1)
     {
         // 设置写入方式flag
-        m_is_async = true;
+        m_is_async = true;  // 异步
         //创建并设置阻塞队列长度
         m_log_queue = new block_queue<string>(max_queue_size);
         pthread_t tid;
@@ -55,7 +55,6 @@ bool Log::init(const char *file_name, int close_log, int log_buf_size, int split
     const char *p = strrchr(file_name, '/');
     char log_full_name[500] = {0};
 
-    
     if(p == NULL)  // 自定义日志名,若输入的文件名没有/，则直接将时间+文件名作为日志名
     {
         // snprintf:将格式化的数据写入字符串

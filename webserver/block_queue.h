@@ -139,7 +139,7 @@ public:
         m_array[m_back] = item;
         m_size++;
 
-        m_cond.broadcast();
+        m_cond.broadcast();  // 唤醒线程
         m_mutex.unlock();
 
         return true;
